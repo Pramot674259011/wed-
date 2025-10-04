@@ -16,8 +16,48 @@ class AdminAndFacultySeeder extends Seeder
             'password' => Hash::make('123456789'),
         ]);
 
+        // Clear existing faculty records
         Faculty::truncate();
-        Faculty::create(['name'=>'ผศ.ดร. สมชาย ใจดี','degree'=>'Ph.D.','position'=>'รองประธานสาขาฯ','image'=>'','bio'=>'ผู้เชี่ยวชาญด้านซอฟต์แวร์']);
-        Faculty::create(['name'=>'ผศ.ดร. สายใจ กล้าหาญ','degree'=>'Ph.D.','position'=>'หัวหน้าหลักสูตร','image'=>'','bio'=>'สอนวิชาออกแบบซอฟต์แวร์']);
+        
+        // Create faculty members with the new information
+        Faculty::create([
+            'name' => 'อาจารย์ ดร. วรเชษฐ์ อุทธา',
+            'degree' => 'Dr. Worachet Uttha',
+            'position' => 'ประธานสาขาวิชาวิศวกรรมซอฟต์แวร์',
+            'image' => '', // Add image URL if available
+            'bio' => ''
+        ]);
+        
+        Faculty::create([
+            'name' => 'อาจารย์ ดร.อุษณีย์ ภักดีตระกูลวงศ์',
+            'degree' => 'Dr. Udsanee Pakdeetrakulwong',
+            'position' => 'ประธานสาขาวิชาวิศวกรรมซอฟต์แวร์',
+            'image' => '', // Add image URL if available
+            'bio' => ''
+        ]);
+        
+        Faculty::create([
+            'name' => 'อาจารย์ สมเกียรติ ช่อเหมือน',
+            'degree' => 'Somkiat Chormuan',
+            'position' => 'รองประธานฯ ฝ่ายนโยบายและแผน',
+            'image' => '', // Add image URL if available
+            'bio' => ''
+        ]);
+        
+        Faculty::create([
+            'name' => 'อาจารย์ นฤพล สุวรรณวิจิตร',
+            'degree' => 'Naruapon Suwanwijit',
+            'position' => 'รองประธานฯ ฝ่ายประกันคุณภาพฯ',
+            'image' => '', // Add image URL if available
+            'bio' => ''
+        ]);
+        
+        Faculty::create([
+            'name' => 'อาจารย์ สุธารัตน์ ชาวนาฟาง',
+            'degree' => 'Sutarat Chaonafang',
+            'position' => 'อาจารย์ลาศึกษาต่อปริญญาเอก',
+            'image' => '', // Add image URL if available
+            'bio' => 'hhhh'
+        ]);
     }
 }

@@ -91,10 +91,11 @@ class AdminController extends Controller
             $content['banner'] = '/storage/' . $path;
         }
 
-        // handle card images and captions (up to 6)
+        // handle card images, captions, and descriptions (up to 6)
         $cards = [];
         for ($i = 1; $i <= 6; $i++) {
             $caption = $request->input('card_caption_' . $i);
+            $description = $request->input('card_description_' . $i);
             $imgPath = $content['cards'][$i-1]['image'] ?? null;
 
             if ($request->hasFile('card_image_' . $i)) {
@@ -102,8 +103,8 @@ class AdminController extends Controller
                 $imgPath = '/storage/' . $p;
             }
 
-            if ($imgPath || $caption) {
-                $cards[] = ['image' => $imgPath, 'caption' => $caption];
+            if ($imgPath || $caption || $description) {
+                $cards[] = ['image' => $imgPath, 'caption' => $caption, 'description' => $description];
             }
         }
 

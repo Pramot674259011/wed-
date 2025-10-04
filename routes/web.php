@@ -28,6 +28,7 @@ Route::get('/home', function () {
 
 // faculty and staff page
 Route::get('/faculty', function () {
+    // Get all faculty members ordered by id (which reflects the order they were created)
     $faculties = \App\Models\Faculty::orderBy('id')->get();
     return view('faculty', compact('faculties'));
 });

@@ -9,31 +9,6 @@
     <link href="/css/unified-theme.css" rel="stylesheet" />
     <style>
         /* Page specific styles */
-        .featured-news {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            margin-bottom: 2rem;
-        }
-        
-        .featured-news .news-image {
-            height: 300px;
-            border-radius: 0;
-        }
-        
-        .featured-news .news-content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .featured-news .news-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-        
         .news-card {
             background: white;
             border-radius: 16px;
@@ -129,18 +104,6 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
-            .featured-news {
-                grid-template-columns: 1fr;
-            }
-            
-            .featured-news .news-image {
-                height: 200px;
-            }
-            
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
         
         @media (max-width: 480px) {
@@ -148,7 +111,6 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -158,7 +120,7 @@
             <div class="nav-links">
                 <a href="/" class="nav-link">หน้าหลัก</a>
                 <a href="/programs" class="nav-link">หลักสูตร</a>
-                <a href="/faculty" class="nav-link">คณาจารย์</a>
+                <a href="/faculty" class="nav-link">คณะจารย์</a>
                 <a href="/research" class="nav-link">งานวิจัย</a>
                 <a href="/news" class="nav-link active">ข่าวสาร</a>
             </div>
@@ -177,10 +139,6 @@
         </div>
     </div>
     <div class="container">
-
-
-
-
         <div class="card text-center" style="margin-bottom: 2rem; padding: 2rem;">
             <h1 class="title-primary">ข่าวสารและกิจกรรม</h1>
             <p class="subtitle">ติดตามความเคลื่อนไหวและกิจกรรมต่าง ๆ ของสาขาวิชา Software Engineering</p>
@@ -188,131 +146,50 @@
 
         <!-- News Grid -->
         <div class="grid grid-auto">
-            <!-- Featured News -->
-            <article class="card featured-news">
-                <div style="width:100%;height:300px;background:linear-gradient(135deg,var(--primary-red) 0%,var(--primary-red-dark) 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:5rem">
-                    🏆
-                </div>
-                <div class="news-content" style="display:flex;flex-direction:column;justify-content:center">
-                    <span style="display:inline-block;background:linear-gradient(135deg,var(--primary-red) 0%,var(--primary-red-dark) 100%);color:white;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1rem">ข่าวเด่น</span>
-                    <h2 style="font-size:1.6rem;margin-bottom:1rem;font-weight:700;color:var(--text-primary);margin:0 0 0.75rem 0;line-height:1.4">นักศึกษาสาขา Software Engineering คว้ารางวัลชนะเลิศการแข่งขัน Hackathon แห่งชาติ 2568</h2>
-                    <p style="color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;font-size:0.95rem">ทีมนักศึกษาจากสาขาวิชา Software Engineering ได้รับรางวัลชนะเลิศในการแข่งขัน Thailand National Hackathon 2568 ด้วยโปรเจค "Smart Campus Management System" ที่นำเทคโนโลยี AI และ IoT มาประยุกต์ใช้</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V8H19V19Z"/>
-                            </svg>
-                            15 ตุลาคม 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
-                    </div>
-                </div>
-            </article>
+            <!-- Dynamic News Cards from Admin Panel -->
+            @php
+                // Load content from storage
+                $content = [];
+                if (\Illuminate\Support\Facades\Storage::exists('site_content.json')) {
+                    $content = json_decode(\Illuminate\Support\Facades\Storage::get('site_content.json'), true);
+                }
+                $cards = $content['cards'] ?? [];
+                
+                // Ensure we have exactly 6 cards
+                while (count($cards) < 6) {
+                    $cards[] = ['image' => '', 'caption' => '', 'description' => ''];
+                }
+                // Limit to 6 cards
+                $cards = array_slice($cards, 0, 6);
+            @endphp
 
-            <!-- News Card 1 -->
-            <article class="news-card">
-                <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                    💼
-                </div>
-                <div class="news-content">
-                    <span class="news-category">บรรยายพิเศษ</span>
-                    <h3 class="news-title">บรรยายพิเศษ: "DevOps และ Cloud Computing สำหรับ Software Engineer"</h3>
-                    <p class="news-excerpt">เชิญฟังบรรยายพิเศษจากผู้เชี่ยวชาญด้าน DevOps จากบริษัทชั้นนำ พร้อมแชร์ประสบการณ์และเทคนิคการทำงานจริง</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M19,19H5V8H19V19Z"/>
-                            </svg>
-                            22 ตุลาคม 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
+            @foreach($cards as $index => $card)
+                <article class="news-card">
+                    @if(!empty($card['image']))
+                        <div class="news-image">
+                            <img src="{{ $card['image'] }}" alt="News Image" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                    @else
+                        <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                            📰
+                        </div>
+                    @endif
+                    <div class="news-content">
+                        <span class="news-category">ข่าวสาร</span>
+                        <h3 class="news-title">{{ !empty($card['caption']) ? $card['caption'] : 'ข่าวสาร #' . ($index + 1) }}</h3>
+                        <p class="news-excerpt">{{ !empty($card['description']) ? $card['description'] : 'รายละเอียดข่าวสารและกิจกรรมต่าง ๆ ของสาขาวิชา Software Engineering' }}</p>
+                        <div class="news-meta">
+                            <span class="news-date">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V8H19V19Z"/>
+                                </svg>
+                                {{ date('j F Y') }}
+                            </span>
+                            <a href="#" class="news-read-more">อ่านต่อ</a>
+                        </div>
                     </div>
-                </div>
-            </article>
-
-            <!-- News Card 2 -->
-            <article class="news-card">
-                <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                    🎨
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Workshop</span>
-                    <h3 class="news-title">Workshop UI/UX Design: "Creating User-Centered Design"</h3>
-                    <p class="news-excerpt">เรียนรู้หลักการออกแบบ User Interface และ User Experience ที่ดี พร้อมปฏิบัติการจริงกับเครื่องมือการออกแบบสมัยใหม่</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M19,19H5V8H19V19Z"/>
-                            </svg>
-                            5 พฤศจิกายน 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- News Card 3 -->
-            <article class="news-card">
-                <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                    🎓
-                </div>
-                <div class="news-content">
-                    <span class="news-category">การศึกษา</span>
-                    <h3 class="news-title">เปิดรับสมัครโครงการบัณฑิตศึกษาต่อเนื่อง</h3>
-                    <p class="news-excerpt">เปิดรับสมัครนักศึกษาเข้าร่วมโครงการพิเศษสำหรับบัณฑิตที่ต้องการศึกษาต่อระดับปริญญาโท พร้อมทุนการศึกษา</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M19,19H5V8H19V19Z"/>
-                            </svg>
-                            1 พฤศจิกายน 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- News Card 4 -->
-            <article class="news-card">
-                <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                    💻
-                </div>
-                <div class="news-content">
-                    <span class="news-category">การแข่งขัน</span>
-                    <h3 class="news-title">การแข่งขันเขียนโปรแกรมภายในสาขา "SE Code Challenge 2568"</h3>
-                    <p class="news-excerpt">จัดการแข่งขันเขียนโปรแกรมประจำปีสำหรับนักศึกษาทุกชั้นปี พร้อมรางวัลมากมายและโอกาสฝึกงานกับบริษัทพาร์ทเนอร์</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M19,19H5V8H19V19Z"/>
-                            </svg>
-                            12 พฤศจิกายน 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- News Card 5 -->
-            <article class="news-card">
-                <div class="news-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                    🎆
-                </div>
-                <div class="news-content">
-                    <span class="news-category">งานแสดง</span>
-                    <h3 class="news-title">Open Day 2568: "เปิดประตูสู่อนาคตแห่งเทคโนโลยี"</h3>
-                    <p class="news-excerpt">เชิญชวนนักเรียนมัธยมปลายและผู้ปกครองเข้าร่วมงาน Open Day ชมผลงานนักศึกษา สาธิตเทคโนโลยี และปรึกษาการเรียนต่อ</p>
-                    <div class="news-meta">
-                        <span class="news-date">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16,1V3H8V1H6V3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M19,19H5V8H19V19Z"/>
-                            </svg>
-                            25 พฤศจิกายน 2568
-                        </span>
-                        <a href="#" class="news-read-more">อ่านต่อ</a>
-                    </div>
-                </div>
-            </article>
+                </article>
+            @endforeach
         </div>
     </div>
 </body>

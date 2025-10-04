@@ -189,7 +189,7 @@
             <div class="nav-links">
                 <a href="/" class="nav-link">หน้าหลัก</a>
                 <a href="/programs" class="nav-link">หลักสูตร</a>
-                <a href="/faculty" class="nav-link">คณาจารย์</a>
+                <a href="/faculty" class="nav-link">คณะจารย์</a>
                 <a href="/research" class="nav-link active">งานวิจัย</a>
                 <a href="/news" class="nav-link">ข่าวสาร</a>
             </div>

@@ -376,8 +376,12 @@
                             <input type="file" name="card_image_{{ $index+1 }}" accept="image/*" />
                         </div>
                         <div class="form-group">
-                            <label>คำอธิบาย</label>
-                            <input type="text" name="card_caption_{{ $index+1 }}" placeholder="คำอธิบายสั้นๆ" value="{{ $c['caption'] ?? '' }}" />
+                            <label>หัวข้อ</label>
+                            <input type="text" name="card_caption_{{ $index+1 }}" placeholder="หัวข้อข่าวสาร" value="{{ $c['caption'] ?? '' }}" />
+                        </div>
+                        <div class="form-group">
+                            <label>รายละเอียด</label>
+                            <textarea name="card_description_{{ $index+1 }}" placeholder="รายละเอียดข่าวสาร">{{ $c['description'] ?? '' }}</textarea>
                         </div>
                     </div>
                 @endforeach
@@ -434,7 +438,7 @@
         <div class="card">
             <div class="card-header">
                 <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M16,4C18.11,4 19.99,5.89 19.99,8C19.99,10.11 18.11,12 16,12C13.89,12 12,10.11 12,8C12,5.89 13.89,4 16,4M16,13C18.67,13 24,14.34 24,17V20H8V17C8,14.34 13.33,13 16,13M8,12C10.11,12 12,10.11 12,8C12,5.89 10.11,4 8,4C5.89,4 4,5.89 4,8C4,10.11 5.89,12 8,12M8,13C5.33,13 0,14.34 0,17V20H6V17C6,15.22 6.44,14.44 9.31,13.5C8.87,13.19 8.42,13 8,13Z"/>
+                    <path d="M16,4C18.11,4 19.99,5.89 19.99,8C19.99,10.11 18.11,12 16,12C13.89,12 12,10.11 12,8C12,5.89 10.11,4 8,4C5.89,4 4,5.89 4,8C4,10.11 5.89,12 8,12M16,13C18.67,13 24,14.34 24,17V20H8V17C8,14.34 13.33,13 16,13M8,12C10.11,12 12,10.11 12,8C12,5.89 10.11,4 8,4C5.89,4 4,5.89 4,8C4,10.11 5.89,12 8,12M8,13C5.33,13 0,14.34 0,17V20H6V17C6,15.22 6.44,14.44 9.31,13.5C8.87,13.19 8.42,13 8,13Z"/>
                 </svg>
                 <h3>จัดการอาจารย์</h3>
             </div>
@@ -546,8 +550,12 @@
                             <input type="file" name="card_image_${i}" accept="image/*" />
                         </div>
                         <div class="form-group">
-                            <label>คำอธิบาย</label>
-                            <input type="text" name="card_caption_${i}" placeholder="คำอธิบายสั้นๆ" />
+                            <label>หัวข้อ</label>
+                            <input type="text" name="card_caption_${i}" placeholder="หัวข้อข่าวสาร" />
+                        </div>
+                        <div class="form-group">
+                            <label>รายละเอียด</label>
+                            <textarea name="card_description_${i}" placeholder="รายละเอียดข่าวสาร"></textarea>
                         </div>`;
                 return div;
             }
@@ -567,6 +575,7 @@
                         r.querySelector('label').textContent = 'รูปการ์ด #' + i;
                         const file = r.querySelector('input[type=file]'); file.name = 'card_image_' + i;
                         const text = r.querySelector('input[type=text]'); text.name = 'card_caption_' + i;
+                        const textarea = r.querySelector('textarea'); textarea.name = 'card_description_' + i;
                     });
                     count = rows.length;
                 }

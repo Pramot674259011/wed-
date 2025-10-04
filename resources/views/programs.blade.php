@@ -142,6 +142,17 @@
             margin: 20px 0;
         }
         
+        .faculty-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: var(--primary-red);
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
         .stat-item {
             text-align: center;
             background: white;
@@ -225,7 +236,7 @@
             <div class="nav-links">
                 <a href="/" class="nav-link">หน้าหลัก</a>
                 <a href="/programs" class="nav-link active">หลักสูตร</a>
-                <a href="/faculty" class="nav-link">คณาจารย์</a>
+                <a href="/faculty" class="nav-link">คณะจารย์</a>
                 <a href="/research" class="nav-link">งานวิจัย</a>
                 <a href="/news" class="nav-link">ข่าวสาร</a>
             </div>
@@ -350,6 +361,32 @@
                         <li>หมวดวิชาเลือกเสรี: 6 หน่วยกิต</li>
                         <li>รวมทั้งหมด: 132 หน่วยกิต</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Faculty Section -->
+            <div class="section text-center" style="margin: 2rem 0; padding: 1.5rem 0; border-top: 2px solid #f1f5f9; border-bottom: 2px solid #f1f5f9;">
+                <div style="margin-bottom: 1.5rem;">
+                    <h2 class="section-title" style="font-size: 1.5rem; margin: 0 0 0.5rem 0; color: #1f2937;">อาจารย์ประจำหลักสูตร</h2>
+                    <p class="section-subtitle" style="color: #6b7280; margin: 0;">คณาจารย์ผู้เชี่ยวชาญด้าน Software Engineering</p>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div class="faculty-card" style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; transition: all 0.3s ease; width: 160px;">
+                        <img src="https://picsum.photos/seed/f16/300/300" alt="อาจารย์พิเศษ" class="faculty-avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; display: block; border: 3px solid #e5e7eb; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                        <div class="faculty-name" style="font-size: 1.1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">อ.ดร. ณัฐพล พัฒน์ชัย</div>
+                        <div class="faculty-position" style="color: var(--primary-red); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem;">อาจารย์พิเศษ</div>
+                        <div class="faculty-degree" style="color: #6b7280; font-size: 0.8rem;">Ph.D. Computer Science</div>
+                        <div class="faculty-bio" style="color: #4b5563; font-size: 0.8rem; margin-top: 0.5rem; line-height: 1.4;">เชี่ยวชาญด้านปัญญาประดิษฐ์และการเรียนรู้ของเครื่องจักร มีประสบการณ์ในการวิจัยด้าน Deep Learning</div>
+                    </div>
+
+                    <div class="faculty-card" style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; transition: all 0.3s ease; width: 160px;">
+                        <img src="https://picsum.photos/seed/f17/300/300" alt="อาจารย์พิเศษ" class="faculty-avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; display: block; border: 3px solid #e5e7eb; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                        <div class="faculty-name" style="font-size: 1.1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">ผศ. ศิริพร มงคลชัย</div>
+                        <div class="faculty-position" style="color: var(--primary-red); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem;">อาจารย์พิเศษ</div>
+                        <div class="faculty-degree" style="color: #6b7280; font-size: 0.8rem;">M.Sc. Information Security</div>
+                        <div class="faculty-bio" style="color: #4b5563; font-size: 0.8rem; margin-top: 0.5rem; line-height: 1.4;">เชี่ยวชาญด้านความปลอดภัยของข้อมูลและการป้องกันระบบเครือข่าย</div>
+                    </div>
                 </div>
             </div>
 

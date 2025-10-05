@@ -24,15 +24,15 @@ class AdminAndFacultySeeder extends Seeder
             'name' => 'อาจารย์ ดร. วรเชษฐ์ อุทธา',
             'degree' => 'Dr. Worachet Uttha',
             'position' => 'ประธานสาขาวิชาวิศวกรรมซอฟต์แวร์',
-            'image' => '', // Add image URL if available
+            'image' => 'http://pgm.npru.ac.th/se/data/images/c_nab.png',
             'bio' => ''
         ]);
         
         Faculty::create([
             'name' => 'อาจารย์ ดร.อุษณีย์ ภักดีตระกูลวงศ์',
             'degree' => 'Dr. Udsanee Pakdeetrakulwong',
-            'position' => 'ประธานสาขาวิชาวิศวกรรมซอฟต์แวร์',
-            'image' => '', // Add image URL if available
+            'position' => 'รองประธานสาขาฯ',
+            'image' => 'http://pgm.npru.ac.th/se/data/images/c_nee.png',
             'bio' => ''
         ]);
         
@@ -40,7 +40,7 @@ class AdminAndFacultySeeder extends Seeder
             'name' => 'อาจารย์ สมเกียรติ ช่อเหมือน',
             'degree' => 'Somkiat Chormuan',
             'position' => 'รองประธานฯ ฝ่ายนโยบายและแผน',
-            'image' => '', // Add image URL if available
+            'image' => 'http://pgm.npru.ac.th/se/data/images/c_ko.png',
             'bio' => ''
         ]);
         
@@ -48,7 +48,7 @@ class AdminAndFacultySeeder extends Seeder
             'name' => 'อาจารย์ นฤพล สุวรรณวิจิตร',
             'degree' => 'Naruapon Suwanwijit',
             'position' => 'รองประธานฯ ฝ่ายประกันคุณภาพฯ',
-            'image' => '', // Add image URL if available
+            'image' => 'http://pgm.npru.ac.th/se/data/images/c_nrp.png',
             'bio' => ''
         ]);
         
@@ -56,7 +56,7 @@ class AdminAndFacultySeeder extends Seeder
             'name' => 'อาจารย์ สุธารัตน์ ชาวนาฟาง',
             'degree' => 'Sutarat Chaonafang',
             'position' => 'อาจารย์ลาศึกษาต่อปริญญาเอก',
-            'image' => '', // Add image URL if available
+            'image' => 'http://pgm.npru.ac.th/se/data/images/c_nuy.png',
             'bio' => 'hhhh'
         ]);
     }
